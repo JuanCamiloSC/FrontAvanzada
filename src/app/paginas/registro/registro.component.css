@@ -1,0 +1,105 @@
+.registro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f0f0f;
+  color: white;
+  font-family: sans-serif;
+  width: 100vw;
+  height: 100vh;
+}
+
+.bienvenida {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrado vertical */
+  align-items: center;     /* Centrado horizontal */
+  text-align: center;
+  padding: 2rem;
+  flex: 1;
+  height: 100%; /* Asegura que use todo el alto disponible */
+}
+
+.bienvenida h2 {
+  color: orange;
+  font-weight: bold;
+}
+
+.logo {
+  height: 250px;
+  object-fit: contain; /* asegura que no se distorsione */
+  margin-bottom: 2rem;
+}
+
+.btnBack {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(to bottom, #FFD700, #FF8C00);;
+  border-radius: 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+}
+
+.btnContinuar {
+  margin-top: 2rem;
+  background: linear-gradient(to bottom, #FFD700, #FF8C00);
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 10px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+}
+
+.formulario {
+  background-color: transparent;
+  padding: 2rem;
+  flex: 1;
+}
+
+.titulo {
+  color: orange;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+input, select {
+  padding: 0.5rem;
+  border: 2px solid yellow;
+  border-radius: 10px;
+  background-color: transparent;
+  color: white;
+}
+
+input::placeholder, select {
+  color: #ccc;
+}
+
+.btn-registrarse {
+  margin-top: 2rem;
+  padding: 0.75rem;
+  background: linear-gradient(#f9a825, #ff9800);
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+}
+

@@ -1,0 +1,218 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita que salga el scroll lateral */
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    background-color: rgba(21, 18, 46, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+}
+
+.navbar:hover {
+    background-color: rgba(21, 18, 46, 0.98);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Contenedor del navbar */
+.navbar-container {
+    max-width: 1200px; /* Tamaño máximo en pantallas grandes */
+    margin: 0 auto; /* Centra el contenedor */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeInDown 0.5s ease-out;
+}
+
+/* Menú de la izquierda */
+.navbar-left .nav {
+    list-style: none;
+    display: flex;
+    gap: 15px; /* Ajuste del espacio entre los elementos */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-left .nav li {
+    position: relative;
+}
+
+.navbar-left .nav li a {
+    text-decoration: none;
+    color: white; /* Color blanco por defecto */
+    font-weight: 500;
+    font-size: 14px; /* Fuente más pequeña en dispositivos móviles */
+    padding: 8px 12px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar-left .nav li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.navbar-left .nav li a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.navbar-left .nav li a:hover {
+    color: #ff512f;
+    transform: translateY(-2px);
+}
+
+/* Estado activo (seleccionado) */
+.navbar-left .nav li a.active {
+    color: #ff512f;
+    font-weight: bold;
+    background: rgba(255, 81, 47, 0.1);
+}
+
+/* Botones de la derecha */
+.navbar-right {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    background: linear-gradient(45deg, #ff512f, #dd2476);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(255, 81, 47, 0.3);
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.btn:hover::after {
+    transform: translateX(100%);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 81, 47, 0.4);
+}
+
+.btn-signup {
+    background: linear-gradient(45deg, #f7971e, #ffd200);
+    box-shadow: 0 4px 15px rgba(247, 151, 30, 0.3);
+}
+
+.btn-signup:hover {
+    box-shadow: 0 6px 20px rgba(247, 151, 30, 0.4);
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Main content area */
+.main-content {
+    padding-top: 80px; /* Esta altura debe ser igual o mayor que la altura de tu navbar */
+    min-height: calc(100vh - 80px);
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Reemplazamos el estilo para router-outlet por un contenedor que lo envolverá */
+.router-content {
+    width: 100%;
+    position: relative;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    /* Navbar ajustado para móviles */
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .navbar-left .nav {
+        flex-direction: row; /* Los elementos se alinean horizontalmente */
+        justify-content: center;
+        margin-top: 0;
+    }
+
+    .navbar-left .nav li a {
+        font-size: 13px; /* Fuente más pequeña en móviles */
+        padding: 6px 8px; /* Menor espacio alrededor de los enlaces */
+    }
+
+    .navbar-right {
+        gap: 8px; /* Ajuste en los botones de la derecha */
+    }
+
+    .btn {
+        padding: 6px 15px; /* Botones más pequeños en móviles */
+        font-size: 14px;
+    }
+
+    .navbar-container {
+        flex-direction: row;
+        gap: 15px; /* Espacio entre los elementos */
+        align-items: center;
+    }
+    
+    /* Ajustamos el padding-top del contenido principal para móviles */
+    .main-content {
+        padding-top: 70px;
+    }
+}
+

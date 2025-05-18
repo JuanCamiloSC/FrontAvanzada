@@ -1,0 +1,49 @@
+<div class="registro-container">
+  <div class="bienvenida">
+    <button class="btn-back">
+      <span>&larr;</span>
+    </button>
+    <h2>TE DAMOS LA<br>BIENVENIDA A</h2>
+    <img src="LogoShieldUQ.png" alt="Shield UQ Logo" class="logo">
+
+    <!-- Botón Continuar original -->
+    <button class="btnContinuar" >Continuar</button>
+  </div>
+
+  <div class="formulario">
+    <h1 class="titulo">Registrate</h1>
+
+    <!-- Referenciamos el formulario con #miFormulario -->
+    <form #miFormulario="ngForm" [formGroup]="registroForm" (ngSubmit)="registrar()" novalidate>
+
+      <label>Nombre Completo</label>
+      <input type="text" formControlName="nombre" placeholder="Ingresa tu nombre completo" />
+
+      <label>Email</label>
+      <input type="email" formControlName="email" placeholder="shield@email.com" />
+
+      <label>Teléfono</label>
+      <input type="number" formControlName="telefono" placeholder="Ingresa tu número de teléfono" />
+
+      <label>Ciudad</label>
+      <select formControlName="ciudad">
+        <option value="" disabled selected>¿Dónde resides?</option>
+        <option *ngFor="let ciudad of ciudades" [value]="ciudad">{{ ciudad }}</option>
+      </select>
+
+      <label>Dirección</label>
+      <input type="text" formControlName="direccion" placeholder="Ingresa tu dirección" />
+
+      <label>Contraseña</label>
+      <input type="password" formControlName="password" placeholder="Ingresa tu nueva contraseña" />
+
+      <label>Confirmar contraseña</label>
+      <input type="password" formControlName="confirmaPassword" placeholder="Confirma tu contraseña" />
+
+      @if (registroForm.hasError('passwordsMismatch')) {
+      <div class="alert alert-danger" role="alert" >Las contraseñas no coinciden</div>
+      }
+      <!-- El botón submit queda fuera visualmente -->
+    </form>
+  </div>
+</div>

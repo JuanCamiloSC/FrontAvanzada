@@ -1,0 +1,63 @@
+<form>
+    <div>
+      <label>Título: </label>
+      <input type="text" />
+    </div>
+   
+    <div>
+      <label>Descripción: </label>
+      <textarea></textarea>
+    </div>
+   
+    <div class="col-12 col-sm-6">
+      <label  class="form-label">Categoría: </label>
+      <select lass="form-select" formControlName="categoria">
+        <option value="" >Seleccione una categoría</option>
+        @for(item of categorias; track $index){
+          <option value="{{item}}">{{item}}</option>
+        }
+        <option value="Mascota Perdida">Mascota Perdida</option>
+        <option value="Robo">Robo</option>
+        <option value="Alumbrado público">Alumbrado público</option>
+        <option value="Huecos en la vía">Huecos en la vía</option>
+
+      </select>
+    </div>
+   
+    <div>
+      <label>Ciudad: </label>
+      <select formControlName="ciudad">
+        <option value="" disable selected>Selecciones una ciudad</option>
+        @for(item of ciudad; track $index){
+          <option value="{{item}}">{{item}}</option>
+        }
+        <option values = "Armenia">Armenia</option>
+        <option values = "Salento">Salento</option>
+        <option values = "Filandia">Filandia</option>
+        <option values = "Quimbaya">Quimbaya</option>
+        <option values = "La Tebaida">La Tebaida</option>
+        <option values = "Montenegro">Montenegro</option>
+        <option values = "Circasia">Calarca</option>
+        <option values = "Calarcá">Calarcá</option>
+        <option values = "Bogotá">Bogotá</option>
+        <option values = "Pereira">Pereira</option>
+        <option values = "Medellín">Medellín</option>
+        <option values = "Barranquilla">Barranquilla</option>
+        <option values = "Cartagena">Cartagena</option>
+        <option values = "Santa Marta">Santa Marta</option>
+      </select>
+    </div>
+   
+    <div>
+      <label>Ubicación: </label>
+      <input type="text" />
+    </div>
+   
+    <div>
+      <label>Imagen reporte: </label>
+      <input type="file" (change)="onFileChange($event)" />
+    </div>
+
+   
+    <button type="submit">Crear reporte</button>
+</form>   
