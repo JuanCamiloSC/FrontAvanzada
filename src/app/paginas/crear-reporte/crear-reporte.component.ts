@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import mapboxgl from 'mapbox-gl';
+import { MapaService } from '../../servicios/mapa.service';
 
 @Component({
   selector: 'app-crear-reporte',
+  standalone: true,
   imports: [],
   templateUrl: './crear-reporte.component.html',
   styleUrl: './crear-reporte.component.css'
 })
-export class CrearReporteComponent {
+export class CrearReporteComponent implements OnInit {
 
   crearReporteForm!: FormGroup;
   categorias: string[];
   ciudad: string[];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private mapaService: MapaService
+  ) {
+
     this.crearFormulario();
     this.categorias = [
       'Mascota Perdida',
@@ -27,6 +34,7 @@ export class CrearReporteComponent {
       'Bogotá', 'Pereira', 'Medellín', 'Barranqiulla',
       'Caratagena', 'Santa Marta'
     ];
+    
   }
 
   private crearFormulario() {
@@ -52,5 +60,16 @@ export class CrearReporteComponent {
     console.log(this.crearReporteForm.value);
   }
 
+  ngOnInit(): void {
+    this.mapaService.crearMapa();
 
+    this.mapaService.agregarMarcador().subscribe((marcador) => {
+      this.crearReporteForm.get('ubicacion')?.setValue({
+        latitud: marcador.lat,
+        longitud: marcador.lng,
+      });
+    });
+  }
+
+  
 }

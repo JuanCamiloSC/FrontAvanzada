@@ -88,3 +88,8 @@ nav {
   margin-bottom: 50px;
   
 }
+
+#mapa {
+ width: 100vw;
+ height: 100vh;
+}
