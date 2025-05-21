@@ -18,10 +18,9 @@ export class InicioComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {
- this.mapaService.crearMapa();
- const reportes = this.reportesService.listar();
- this.mapaService.pintarMarcadores(reportes);
-}
-
+    this.mapaService.crearMapa();
+    const reportes = this.reportesService.listar();
+    this.mapaService.pintarMarcadores(reportes);
+  }
 
 }

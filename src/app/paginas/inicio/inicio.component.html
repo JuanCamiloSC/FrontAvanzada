@@ -1,28 +1,18 @@
-<div class="inicio-container">
-
-    <nav class="barraInicio">
-        <div class="headerIzquierda">
-            <h1>Shield UQ</h1>
-           
+<div class="inicio-container"> 
+    <div class="contenedorPrincipal">
+        <div class="contenedorBotones">
+            <button type="button" class="btnInicio">Inicio</button>
+            <button type="button" class="btnRegistrarse">Registrarse</button>
         </div>
-        
-        <div class="headerDerecha">
-            <button routerLink="/login"class="login">Login</button> 
-            <button routerLink="/registro" class="registro">Registro</button>
-        </div>
-    </nav>
-
-    <div class = contendorPrincipal>
-        
-        <img src="LogoShieldUQ.png" class="logo" />
-        <h2>Bienvenido a Shield UQ</h2>
-        <p>
-            Shield UQ es una plataforma donde la ciudadanía puede reportar robos, mascotas perdidas, incendios 
-            u otros sucesos importantes para la comunidad. Juntos, hacemos de nuestro entorno un lugar más seguro y solidario.
-        </p>
-
+            <div>
+                <img src="LogoShieldUQ.png" class="logo"/>
+                <h1>Bienvenido a Shield UQ</h1>
+                <p>
+                Shield UQ es una plataforma donde la ciudadanía puede reportar robos, mascotas perdidas, incendios 
+                u otros sucesos importantes para la comunidad. Juntos, hacemos de nuestro entorno un lugar más seguro y solidario.
+                </p>
+            </div>
     </div>
-
-    <div id="mapa" ></div>
-
+  <!-- El ID aquí debe coincidir con el container que usas en TypeScript -->
+  <div id="mapa" class="mapa"></div>
 </div>

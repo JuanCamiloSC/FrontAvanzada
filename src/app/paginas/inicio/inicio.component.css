@@ -1,20 +1,46 @@
-body {
-  background-color: #121212; 
-  color: #ffffff; /* color de texto blanco */
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
 
 h1{
-  color: #fcff31;
-  font-family:  'Poppins', sans-serif;
- }
-
-h2{
   color: #FF6A00 ;
   text-align: center;
-   margin-top: 1.5rem; /* mantiene espacio con respecto a la imagen */
+  margin-top: 1.5rem; /* mantiene espacio con respecto a la imagen */
 }
+
+.contenedorBotones{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px; /* espacio entre botones */
+}
+
+.btnInicio{
+  background: linear-gradient(to bottom, #fcea0d, #ff7a00);
+  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  
+}
+
+.btnInicio:hover{
+  background: linear-gradient(to bottom, #a09300, #974700);
+  color: #a7a7a7;
+}
+
+.btnRegistrarse{
+  background-color: #02b7ff;
+  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  
+}
+
+.btnRegistrarse:hover{
+  background-color: #1b9ed1;
+  color: #dbdbdb;
+}
+
 
 .logo {
   width: 250px;
@@ -28,60 +54,10 @@ p{
   text-align: center;
 }
 
-.login{
-  background: linear-gradient(to bottom, #FFD700, #FF8C00); /* degradado amarillo a naranja */
-  color: black; /* color del texto */
-  font-weight: bold; /* texto en negrita */
-  padding: 12px 24px; /* espacio interno */
-  border: none; /* sin borde */
-  border-radius: 30px; /* bordes redondeados */
-  cursor: pointer; /* cursor tipo mano */
-  font-family: 'Roboto', sans-serif; /* tipografía */
-  font-size: 16px; /* tamaño de letra */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* sombra opcional */
-  transition: transform 0.2s ease;
-}
-
-.registro{
-  background: linear-gradient(to bottom, #FFD700, #FF8C00); 
-  color: black; 
-  font-weight: bold; 
-  padding: 12px 24px; 
-  border: none; 
-  border-radius: 30px; 
-  cursor: pointer; 
-  font-family: 'Roboto', sans-serif; 
-  font-size: 16px; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
-  transition: transform 0.2s ease;
-}
-
-.barraInicio{
-  background-color: #4a4a4a; /* Gris oscuro */
-  height: 60px;              /* Altura de la barra */
-  width: 100%;               /* Ocupa todo el ancho */
-  display: flex;
-  align-items: center;       /* Centra verticalmente */
-  justify-content: space-between; /* Distribuye contenido si lo hubiera */
-  padding: 0 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.headerIzquierda {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.headerDerecha {
-  display: flex;
-  gap: 20px;
-}
-
-.contenedorPrincipla{
-  margin-top: 200px; /* Aquí puedes ajustar según tu preferencia */
+.contenedorPrincipal {
+  margin-top: 100px;
   text-align: center;
-  padding: 200px;
+  padding: 40px;
 }
 
 nav {
@@ -89,7 +65,10 @@ nav {
   
 }
 
-#mapa {
- width: 100vw;
- height: 100vh;
+.mapa {
+  width: 90%; /* en lugar de 100%, para que no ocupe todo el ancho */
+  height: 500px;
+  margin: 30px auto; /* centrado + espacio arriba y abajo */
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* opcional, da efecto de profundidad */
 }

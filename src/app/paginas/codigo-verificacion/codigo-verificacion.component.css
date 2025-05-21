@@ -1,0 +1,58 @@
+h1{
+    color: #FF6A00;
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+.contenedorPrincipal{
+    background-color: #0f0f0f;
+    color: white;
+}
+
+.codigoConfirmacion{
+    display: flex;
+    flex-direction: column; /* Uno debajo del otro */
+    align-items: center;     /* Centrado horizontal */
+    gap: 1rem;               /* Espacio entre el input y el botón */
+    margin-top: 1rem;    
+}
+
+input, verificacion{
+    padding: 0.5rem;
+    border: 2px solid yellow;
+    border-radius: 10px;
+    background-color: transparent;
+    color: white;
+    width: 300px;
+    text-align: center;
+}
+
+.btnVerificar{
+    background: linear-gradient(to bottom, #fcea0d, #ff7a00);
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btnVerificar:hover{
+  background: linear-gradient(to bottom, #a09300, #974700);
+  color: #a7a7a7;
+}
+
+/*Para pantallas más pequellas */
+@media (max-width: 360px) {
+    .code-input {
+        width: 35px;
+        height: 50px;
+        font-size: 22px;
+    }
+    
+    .separator {
+        font-size: 22px;
+        margin: 0 2px;
+    }
+}
