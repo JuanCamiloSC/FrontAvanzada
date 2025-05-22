@@ -7,6 +7,7 @@ import { GestionReportesComponent } from './paginas/gestion-reportes/gestion-rep
 import { DetalleReporteComponent } from './paginas/detalle-reporte/detalle-reporte.component';
 import { CodigoVerificacionComponent } from './paginas/codigo-verificacion/codigo-verificacion.component'; 
 import { RecuperarPasswordComponent } from './paginas/recuperar-password/recuperar-password.component';
+import { LoginAdminComponent } from './paginas/administrador/login-admin/login-admin.component';
 
 export const routes: Routes = [
    { path: '', component: InicioComponent },
@@ -17,5 +18,6 @@ export const routes: Routes = [
    { path: 'detalle-reporte/:id', component: DetalleReporteComponent },
    { path: 'codigo-verificacion', component: CodigoVerificacionComponent},
    { path: 'recuperar-password', component: RecuperarPasswordComponent},
+   { path: 'login-admin', component: LoginAdminComponent},
    { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
