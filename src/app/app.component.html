@@ -1,3 +1,4 @@
-<app-header></app-header>
+<app-header *ngIf="mostrarBarraAdmin"></app-header>
+<app-header-usuario *ngIf="mostrarBarraUsuario"></app-header-usuario>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
