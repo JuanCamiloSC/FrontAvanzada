@@ -41,7 +41,7 @@
       <label>Confirmar contraseña</label>
       <input type="password" formControlName="confirmaPassword" placeholder="Confirma tu contraseña" />
 
-      @if (registroForm.hasError('passwordsMismatch')) {
+      @if (registerForm.hasError('passwordsMismatch')) {
       <div class="alert alert-danger" role="alert" >Las contraseñas no coinciden</div>
       }
       <!-- El botón submit queda fuera visualmente -->

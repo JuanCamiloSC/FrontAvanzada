@@ -10,10 +10,10 @@ import { AbstractControlOptions, FormBuilder, FormControl, FormGroup, ReactiveFo
 })
 export class RegistroComponent{
 
-  registroForm!: FormGroup;
+  registerForm!: FormGroup;
 
   private crearFormulario() {
-    this.registroForm = this.formBuilder.group({     
+    this.registerForm = this.formBuilder.group({     
       nombre: ['', [Validators.required]],
       telefono: ['', [Validators.required, Validators.maxLength(10)]],
       ciudad: ['', [Validators.required]],
@@ -30,8 +30,8 @@ export class RegistroComponent{
     this.crearFormulario();
   }
 
-  public registrar() {
-    console.log(this.registroForm.value);
+  public registration() {
+    console.log(this.registerForm.value);
  }
 
  public passwordsMatchValidator(formGroup: FormGroup) {
