@@ -1,10 +1,10 @@
 .contenedorPrincipal {
     background-color: #1b1b1b;
-  color: white;
-  height: 100vh; /* Ocupa toda la altura de la ventana */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centra verticalmente el contenido */
+    color: white;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente el contenido */
 }
 
 h1{

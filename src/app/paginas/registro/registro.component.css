@@ -76,19 +76,7 @@ label {
   margin-bottom: 0.25rem;
 }
 
-input[type="text"] {
-  border: 2px solid #fcea0d; /* amarillo */
-  border-radius: 6px;
-  padding: 8px;
-  width: 100%;  /* Ajustable según el diseño */
-  box-sizing: border-box;
-}
 
-input[type="text"]:focus {
-  outline: none;
-  border-color: #ff7a00; /* naranja fuerte al hacer clic */
-  box-shadow: 0 0 5px #ff7a00;
-}
 
 input::placeholder, select {
   color: #ccc;
