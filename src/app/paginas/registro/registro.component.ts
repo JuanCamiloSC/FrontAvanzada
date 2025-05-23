@@ -15,7 +15,6 @@ import { Municipality } from '../../enum/municipality.enum';
  styleUrl: './registro.component.css'
 })
 export class RegistroComponent{
-
   ciudades = Object.values(Municipality);
 
   registerForm!: FormGroup;
@@ -46,6 +45,7 @@ export class RegistroComponent{
   }
 
   public registration() {
+
     if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched(); // ✅ muestra los errores si no ha escrito nada
       return;
