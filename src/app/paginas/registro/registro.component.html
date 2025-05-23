@@ -1,3 +1,4 @@
+
 <div class="registro-container">
   <div class="bienvenida">
     <button class="btn-back">
@@ -14,7 +15,7 @@
     <h1 class="titulo">Registrate</h1>
 
     <!-- Referenciamos el formulario con #miFormulario -->
-    <form #miFormulario="ngForm" [formGroup]="registroForm" (ngSubmit)="registrar()" novalidate>
+    <form #miFormulario="ngForm" [formGroup]="registerForm" (ngSubmit)="registration()" novalidate>
 
       <label>Nombre Completo</label>
       <input type="text" formControlName="nombre" placeholder="Ingresa tu nombre completo" />

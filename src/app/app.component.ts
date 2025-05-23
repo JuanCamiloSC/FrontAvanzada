@@ -5,11 +5,13 @@ import { HeaderComponent } from "./componentes/header/header.component";
 import { HeaderUsuarioComponent } from './componentes/header-usuario/header-usuario.component';
 import { FooterComponent } from "./componentes/footer/footer.component";
 import { filter } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, HeaderUsuarioComponent, FooterComponent],
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, HeaderComponent, HeaderUsuarioComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -1,3 +1,4 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()" novalidate="">
 <div class="containerPrincipal">
     <div class="login-page">
         <div class="logo-container">
@@ -15,25 +16,26 @@
         <div class="formulario">
             <div class="campo">
             <label>Email</label>
-            <input type="text" placeholder="shield@email.com" />
+            <input type="text" formControlName="email" placeholder="shield@email.com" />
             </div>
 
             <div class="campo">
             <label>Password</label>
-            <input type="password" placeholder="Ingresa tu password" />
+            <input type="password" formControlName="password" placeholder="Ingresa tu password" />
             </div>
 
             <div class="recuperar">
-            <a href="#" class="enlace">Recuperar contraseña</a>
+            <a [routerLink]="['/recuperar-password']" class="enlace">Recuperar contraseña</a>
             </div>
 
             <div class="boton-ingresar">
-            <button>Ingresar</button>
+            <button type="submit">Ingresar</button>
             </div>
 
             <div class="registro">
-            <p>¿No tienes cuenta? <a href="#" class="enlace">Regístrate</a></p>
+            <p>¿No tienes cuenta? <a [routerLink]="['/registro']" class="enlace">Regístrate</a></p>
             </div>
         </div>
     </div>
 </div>
+</form>
