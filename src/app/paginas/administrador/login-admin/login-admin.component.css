@@ -22,7 +22,7 @@
 }
 
 .logo {
-  width: 150px;
+  width: 100px;
 }
 
 .titulo h1 {
@@ -91,8 +91,36 @@ button {
   color: #a7a7a7;
 }
 
+.back-button-container {
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+
 .registro {
   text-align: center;
   font-size: 0.9rem;
   margin-top: 1rem;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #ffc107;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #ffc107;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  background: rgba(255, 193, 7, 0.1);
+}
+
+.back-button:hover {
+  background: #ffc107;
+  color: #343a40;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
 }
