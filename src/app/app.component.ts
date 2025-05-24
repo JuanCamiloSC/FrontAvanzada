@@ -24,7 +24,8 @@ export class AppComponent {
   //Rutas que debe mostrar para cada barra
 private readonly  rutasAdmin = [
   '/gestion-reportes',
-  '/gestion-categorias'
+  '/gestion-categorias',
+  '/gestion-reportesadmin'
 ];
 
 private readonly rutasUsuario = [

@@ -7,10 +7,11 @@ h1{
 
 .contenedorBotones{
   position: absolute;
-  top: 20px;
+  top: -60px;
   right: 20px;
   display: flex;
   gap: 10px; /* espacio entre botones */
+  margin-top: 100px;
 }
 
 .btnInicio{
@@ -55,20 +56,47 @@ p{
 }
 
 .contenedorPrincipal {
-  margin-top: 100px;
+  margin-top: 0px;
   text-align: center;
   padding: 40px;
+
+}
+
+.inicio-container{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #1b1b1b;
+  color: white;
 }
 
 nav {
   margin-bottom: 50px;
-  
 }
 
 .mapa {
-  width: 90%; /* en lugar de 100%, para que no ocupe todo el ancho */
+  width: 90%;
   height: 500px;
-  margin: 30px auto; /* centrado + espacio arriba y abajo */
+  margin: 30px auto 80px auto; /* 80px de espacio inferior */
   border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* opcional, da efecto de profundidad */
+  box-shadow: 0 4px 20px rgba(255, 230, 0, 0.1);
+}
+
+.admin-link {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  color: rgb(0, 0, 0);
+  background: linear-gradient(to bottom, #fcea0d, #ff7a00);
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  transition: background-color 0.3s;
+}
+
+.admin-link:hover {
+  background: linear-gradient(to bottom, #a09300, #974700);
+  color: #a7a7a7;
 }

@@ -13,6 +13,7 @@ import { PrincipalUsuarioComponent } from './paginas/principal-usuario/principal
 import { PerfilComponent } from './paginas/perfil/perfil.component';
 import { EditarPerfilComponent } from './paginas/editar-perfil/editar-perfil.component';
 import { GestionCategoriasComponent } from './paginas/administrador/gestion-categorias/gestion-categorias.component';
+import { GestionReportesadminComponent } from './paginas/administrador/gestion-reportesadmin/gestion-reportesadmin.component';
 
 export const routes: Routes = [
    { path: '', component: InicioComponent },
@@ -29,5 +30,6 @@ export const routes: Routes = [
    { path: 'perfil', component: PerfilComponent},
    {path: 'editar-perfil', component: EditarPerfilComponent},
    {path: 'gestion-categorias', component: GestionCategoriasComponent},
+   {path: 'gestion-reportesadmin', component: GestionReportesadminComponent},
    { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
