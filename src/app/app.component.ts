@@ -28,6 +28,9 @@ private readonly  rutasAdmin = [
 
 private readonly rutasUsuario = [
   '/crear-reporte',
+  '/principal-usuario',
+  '/perfil',
+  '/editar-perfil'
 ];
 
 constructor(private router: Router) {

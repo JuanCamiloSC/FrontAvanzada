@@ -9,6 +9,9 @@ import { CodigoVerificacionComponent } from './paginas/codigo-verificacion/codig
 import { RecuperarPasswordComponent } from './paginas/recuperar-password/recuperar-password.component';
 import { LoginAdminComponent } from './paginas/administrador/login-admin/login-admin.component';
 import { PasswordRecuperarComponent } from './paginas/password-recuperar/password-recuperar.component';
+import { PrincipalUsuarioComponent } from './paginas/principal-usuario/principal-usuario.component';
+import { PerfilComponent } from './paginas/perfil/perfil.component';
+import { EditarPerfilComponent } from './paginas/editar-perfil/editar-perfil.component';
 
 export const routes: Routes = [
    { path: '', component: InicioComponent },
@@ -21,5 +24,8 @@ export const routes: Routes = [
    { path: 'recuperar-password', component: RecuperarPasswordComponent},
    { path: 'login-admin', component: LoginAdminComponent},
    { path: 'password-recuperar', component: PasswordRecuperarComponent},
+   { path: 'principal-usuario', component: PrincipalUsuarioComponent},
+   { path: 'perfil', component: PerfilComponent},
+   {path: 'editar-perfil', component: EditarPerfilComponent},
    { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
