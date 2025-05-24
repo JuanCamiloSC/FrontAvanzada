@@ -1,0 +1,26 @@
+<div class ="contenedorPrincipal">
+    <form [formGroup]="historialForm">
+    <div formArrayName="reportes" class="contenedor-reportes">
+        <div
+        *ngFor="let reporte of reportes.controls; let i = index"
+        [formGroupName]="i"
+        class="tarjeta-reporte"
+        (click)="verDetalle(reporte.value.id)"
+        >
+        <div class="imagen">
+            <img [src]="reporte.get('imagen')?.value || 'assets/placeholder-img.png'" alt="Imagen del reporte" />
+        </div>
+        <div class="contenido">
+            <h3>{{ reporte.get('titulo')?.value }}</h3>
+            <p>{{ reporte.get('descripcion')?.value }}</p>
+        </div>
+        <div class="detalles">
+            <p><i class="fas fa-map-marker-alt"></i> {{ reporte.get('ciudad')?.value }}</p>
+            <p><i class="fas fa-clock"></i> {{ reporte.get('fecha')?.value }}</p>
+            <p><i class="fas fa-th-large"></i> {{ reporte.get('categoria')?.value }}</p>
+            <p><i class="fas fa-flag"></i> Estado: {{ reporte.get('estadoActual')?.value }}</p>
+        </div>
+        </div>
+    </div>
+    </form>
+</div>

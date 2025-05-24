@@ -33,7 +33,8 @@ private readonly rutasUsuario = [
   '/principal-usuario',
   '/perfil',
   '/editar-perfil',
-  '/detalle-reporte/id'
+  '/detalle-reporte/id',
+  '/reportes-usuario'
 ];
 
 constructor(private router: Router) {
