@@ -90,21 +90,6 @@
   border-radius: 6px;
 }
 
-.btn.save {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: linear-gradient(to bottom, #fcea0d, #ff7a00);
-  border: none;
-  color: rgb(0, 0, 0);
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.btn.save:hover {
-  background: linear-gradient(to bottom, #a09300, #974700);
-  color: #a7a7a7;
-}
-
 .info-row {
   display: flex;
   justify-content: flex-start;

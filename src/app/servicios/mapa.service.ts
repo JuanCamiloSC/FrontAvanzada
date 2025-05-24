@@ -85,4 +85,21 @@ export class MapaService {
         .addTo(this.mapa);
     });
   }
+
+  public colocarMarcador(lat: number, lng: number, titulo?: string) {
+    if (!this.esBrowser || !this.mapa) {
+      console.warn('colocarMarcador: no hay mapa o estás en SSR');
+    return;
+    }
+
+    // Eliminar marcadores previos
+  this.marcadores.forEach(marcador => marcador.remove());
+  this.marcadores = [];
+
+  const nuevoMarcador = new mapboxgl.Marker({ color: 'red' })
+    .setLngLat([lng, lat])
+    .addTo(this.mapa);
+
+  this.marcadores.push(nuevoMarcador);
+  }
 }
