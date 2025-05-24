@@ -25,7 +25,8 @@ export class AppComponent {
 private readonly  rutasAdmin = [
   '/gestion-reportes',
   '/gestion-categorias',
-  '/gestion-reportesadmin'
+  '/gestion-reportesadmin',
+  '/administrador'
 ];
 
 private readonly rutasUsuario = [
@@ -33,7 +34,8 @@ private readonly rutasUsuario = [
   '/principal-usuario',
   '/perfil',
   '/editar-perfil',
-  '/detalle-reporte/id'
+  '/detalle-reporte/id',
+  '/reportes-usuario'
 ];
 
 constructor(private router: Router) {

@@ -1,24 +1,15 @@
-<header class="p-3 text-bg-dark">
-   <div class="container">
-     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-       <a routerLink="" class="d-flex align-items-center mb-2 me-2 mb-lg-0 text-white text-decoration-none">
-           <i class="fa-solid fa-shield-alt fs-3 me-2"></i> {{ title }}
-       </a>
+<header class="header">
+  <div class="header-container">
+    <a routerLink="/administrador" class="logo">
+      <img src="ShieldMinimalista.png" alt="Logo Shield UQ" class="logo-img" />
+      <span class="logo-title">{{ title }}</span>
+    </a>
 
-
-       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-         <li><a routerLink="" class="nav-link px-2 text-secondary">Inicio</a></li>
-         <li><a routerLink="" class="nav-link px-2 text-white">Gestión reportes</a></li>
-         <li><a routerLink="" class="nav-link px-2 text-white">Gestión categorías</a></li>
-         <li><a routerLink="" class="nav-link px-2 text-white">Perfil</a></li>
-         <li><a routerLink="/gestion-reportes" class="nav-link px-2 text-white">Gestión de reportes</a></li>
-       </ul>
-
-
-       <div class="text-end">
-         <button type="button" routerLink="/login" class="btn btn-outline-light me-2">Login</button>
-         <button type="button" routerLink="/registro" class="btn btn-primary">Sign-up</button>
-       </div>
-     </div>
-   </div>
+    <nav class="nav-menu">
+      <a routerLink="/administrador" class="nav-link">Inicio</a>
+      <a routerLink="/gestion-categorias" class="nav-link">Gestión categorías</a>
+      <a routerLink="/gestion-reportesadmin" class="nav-link">Gestión de reportes</a>
+      <a routerLink="/login" class="nav-link">Cerrar sesión</a>
+    </nav>
+  </div>
 </header>

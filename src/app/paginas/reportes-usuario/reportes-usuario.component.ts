@@ -1,19 +1,19 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
 import { ReportesService } from '../../servicios/reportes.service';
+import { Router, RouterModule } from '@angular/router';
 import { ReporteDTO } from '../../dto/reporte-dto';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-administrador',
+  selector: 'app-reportes-usuario',
   imports: [ReactiveFormsModule, RouterModule, CommonModule],
-  templateUrl: './administrador.component.html',
-  styleUrl: './administrador.component.css'
+  templateUrl: './reportes-usuario.component.html',
+  styleUrl: './reportes-usuario.component.css'
 })
-export class AdministradorComponent {
-  
-  reportesForm!: FormGroup;
+export class ReportesUsuarioComponent {
+
+  historialForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -22,27 +22,29 @@ export class AdministradorComponent {
   ) {}
 
   ngOnInit(): void {
-    this.reportesForm = this.fb.group({
+    this.historialForm = this.fb.group({
       reportes: this.fb.array([])
     });
 
     const reportes = this.reportesService.listar();
-    const reportesFormArray = this.reportesForm.get('reportes') as FormArray;
+    const reportesFormArray = this.historialForm.get('reportes') as FormArray;
 
     reportes.forEach((reporte: ReporteDTO) => {
       reportesFormArray.push(this.fb.group({
         id: [reporte.id],
         titulo: [reporte.titulo],
         descripcion: [reporte.descripcion],
-        ubicacion: [reporte.ciudad],
-        hora: [new Date(reporte.fecha).toLocaleTimeString()],
-        categoria: [reporte.categoria]
+        ciudad: [reporte.ciudad],
+        fecha: [new Date(reporte.fecha).toLocaleString()],
+        categoria: [reporte.categoria],
+        imagen: [reporte.imagen],
+        estadoActual: [reporte.estadoActual]
       }));
     });
   }
 
   get reportes(): FormArray {
-    return this.reportesForm.get('reportes') as FormArray;
+    return this.historialForm.get('reportes') as FormArray;
   }
 
   verDetalle(id: string): void {
