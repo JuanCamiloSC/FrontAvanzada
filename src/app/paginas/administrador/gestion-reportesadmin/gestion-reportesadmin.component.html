@@ -1,0 +1,53 @@
+<div class="contenedor-principal">
+  <h2 class="titulo">Revisión de Reportes Pendientes</h2>
+
+  <form [formGroup]="formularioRevision">
+    <div class="tabla-contenedor">
+      <table class="tabla-reportes">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Estado</th>
+            <th>Imagen</th>
+            <th>Fecha</th>
+            <th>Ciudad</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reporte of reportes">
+            <td>{{ reporte.id }}</td>
+            <td>{{ reporte.titulo }}</td>
+            <td>
+              <span class="estado estado-{{ reporte.estado | lowercase }}">
+                {{ reporte.estado }}
+              </span>
+            </td>
+            <td>
+              <img class="imagen" [src]="reporte.imagenUrl" alt="Imagen reporte" />
+            </td>
+            <td>{{ reporte.fecha | date: 'full' }}</td>
+            <td>{{ reporte.ciudad }}</td>
+            <td>
+              <button type="button" class="btn-ver" (click)="verDetalle(reporte)">Ver</button>
+              <button type="button" class="btn-aceptar" (click)="aceptarReporte(reporte.id)">Aceptar</button>
+              <button type="button" class="btn-rechazar" (click)="seleccionarRechazo(reporte.id)">Rechazar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Formulario de motivo de rechazo -->
+    <div *ngIf="mostrarMotivo" class="motivo-rechazo">
+      <h4>Motivo del rechazo</h4>
+      <textarea formControlName="motivo" rows="4" placeholder="Explica por qué rechazas este reporte..."></textarea>
+      <div class="acciones-motivo">
+        <button class="btn-cancelar" (click)="cancelarRechazo()">Cancelar</button>
+        <button class="btn-enviar" (click)="confirmarRechazo()">Enviar</button>
+      </div>
+    </div>
+  </form>
+</div>
+

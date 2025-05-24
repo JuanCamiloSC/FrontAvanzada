@@ -24,10 +24,16 @@ export class AppComponent {
   //Rutas que debe mostrar para cada barra
 private readonly  rutasAdmin = [
   '/gestion-reportes',
+  '/gestion-categorias',
+  '/gestion-reportesadmin'
 ];
 
 private readonly rutasUsuario = [
   '/crear-reporte',
+  '/principal-usuario',
+  '/perfil',
+  '/editar-perfil',
+  '/detalle-reporte/id'
 ];
 
 constructor(private router: Router) {

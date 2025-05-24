@@ -1,1 +1,61 @@
-<p>{{reporte | json}}</p>
+<form [formGroup]="detalleReporteForm" (ngSubmit)="obtener()" novalidate>
+  <div class="reporte-container" *ngIf="reporte">
+
+    <!-- Encabezado -->
+    <div class="reporte-header">
+      <div>
+        <label>Nombre del reporte:</label>
+        <p class="dato-estatico">{{ reporte.titulo }}</p>
+      </div>
+      <div>
+        <label>Localización:</label>
+        <p class="dato-estatico">{{ reporte.ciudad }}</p>
+      </div>
+      <div>
+        <label>Hora:</label>
+        <p class="dato-estatico">{{ reporte.fecha | date: 'shortTime' }}</p>
+      </div>
+      <div>
+        <label>Categoría:</label>
+        <p class="dato-estatico">{{ reporte.categoria }}</p>
+      </div>
+    </div>
+
+    <!-- Imagen + Estado -->
+    <div class="reporte-body">
+      <div class="reporte-imagen">
+        <img [src]="reporte.imagen" alt="Imagen del reporte" />
+      </div>
+
+      <div class="reporte-importancia">
+        <label>Estado actual:</label>
+        <p class="dato-estatico">{{ reporte.estadoActual }}</p>
+      </div>
+    </div>
+
+    <!-- Descripción -->
+    <div class="reporte-descripcion">
+      <label>Descripción del evento:</label>
+      <p class="dato-estatico">{{ reporte.descripcion }}</p>
+    </div>
+
+    <!-- Comentarios -->
+    <div class="reporte-comentarios">
+      <label>Comentario del usuario:</label>
+      <textarea formControlName="comentario" class="textarea-comentario" placeholder="Escribe tu comentario..."></textarea>
+      <button class="btn-comentar">Enviar comentario</button>
+    </div>
+
+    <!-- Mapa -->
+    <div class="reporte-mapa">
+      <label>Ubicación en el mapa:</label>
+      <p class="dato-estatico">
+        Lat: {{ reporte.ubicacion.latitud }}<br>
+        Lng: {{ reporte.ubicacion.longitud }}
+      </p>
+      <!-- Si usas Leaflet o Google Maps, aquí puedes cargar el mapa -->
+      <div id="mapa" class="mapa-estatico"></div>
+    </div>
+
+  </div>
+</form>

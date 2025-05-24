@@ -1,4 +1,67 @@
+form {
+  max-width: 800px;
+  margin: 30px auto;
+  background-color: #ccc; /* Fondo gris claro */
+  color: #000; /* Texto negro */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+form div {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #000; /* Texto negro */
+}
+
+input[type="text"],
+textarea,
+select,
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ff9900;
+  border-radius: 6px;
+  background-color: white; /* Color blanco para campos */
+  color: #000;
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+input[type="file"] {
+  padding: 8px;
+  background-color: white; /* Fondo blanco para input file */
+}
+
 #mapa {
- width: 100%;
- height: 300px;
+  height: 300px;
+  border-radius: 10px;
+  border: 2px solid #ff9900;
+  margin-top: 10px;
+}
+
+button[type="submit"] {
+  background: linear-gradient(to right, #ffcc00, #ff9900);
+  color: black;
+  font-weight: bold;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #ffe066, #ff9900);
 }
