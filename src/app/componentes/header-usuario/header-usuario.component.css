@@ -1,0 +1,70 @@
+.header {
+  background-color: #343a40; /* Color similar al de la imagen */
+  padding: 0.75rem 1rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between; /* Logo a la izquierda, nav a la derecha */
+  align-items: center;
+  max-width: 1200px; /* Limita el ancho máximo */
+  margin: 0 auto; /* Centra el contenedor */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0; /* Evita que el logo se encoja */
+}
+
+.logo-img {
+  height: 50px; /* Ajustado para mejor proporción */
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+.logo-title {
+  color: #ffc107; /* Color amarillo/dorado */
+  font-weight: bold;
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap; /* Para responsive en pantallas pequeñas */
+}
+
+.nav-link {
+  color: #ffc107; /* Color amarillo/dorado */
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav-menu {
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    font-size: 0.9rem;
+  }
+}

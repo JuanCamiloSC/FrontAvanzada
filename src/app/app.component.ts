@@ -25,7 +25,8 @@ export class AppComponent {
 private readonly  rutasAdmin = [
   '/gestion-reportes',
   '/gestion-categorias',
-  '/gestion-reportesadmin'
+  '/gestion-reportesadmin',
+  '/administrador'
 ];
 
 private readonly rutasUsuario = [
