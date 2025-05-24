@@ -27,7 +27,7 @@
       <input type="number" formControlName="telefono" placeholder="Ingresa tu número de teléfono" />
 
       <label>Ciudad</label>
-      <select formControlName="ciudad">
+      <select formControlName="municipality">
         <option value="" disabled selected>¿Dónde resides?</option>
         <option *ngFor="let ciudad of ciudades" [value]="ciudad">{{ ciudad }}</option>
       </select>
@@ -41,9 +41,10 @@
       <label>Confirmar contraseña</label>
       <input type="password" formControlName="confirmaPassword" placeholder="Confirma tu contraseña" />
 
-      @if (registerForm.hasError('passwordsMismatch')) {
-      <div class="alert alert-danger" role="alert" >Las contraseñas no coinciden</div>
-      }
+      <div *ngIf="registerForm.hasError('passwordsMismatch') && registerForm.touched" class="alert alert-danger" role="alert">
+        Las contraseñas no coinciden
+      </div>
+
       <!-- El botón submit queda fuera visualmente -->
     </form>
   </div>

@@ -5,17 +5,21 @@ import { AuthenticationService } from '../../servicios/authentication.service';
 import { TokenService } from '../../servicios/token.service';
 import { LoginDTO } from '../../dto/login-dto';
 import Swal from 'sweetalert2';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
 
   loginForm!: FormGroup;
+  
 
   constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthenticationService, private tokenService: TokenService) {
     this.createForms();

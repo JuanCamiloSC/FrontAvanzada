@@ -1,49 +1,75 @@
 import { Component } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UserService } from '../../servicios/user.service';
+import { CreateUserDTO } from '../../dto/create-user-dto';
+import Swal from 'sweetalert2';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { Municipality } from '../../enum/municipality.enum';
 
 
 @Component({
  selector: 'app-registro',
- imports: [ReactiveFormsModule],
+ imports: [ReactiveFormsModule, RouterModule, CommonModule],
  templateUrl: './registro.component.html',
  styleUrl: './registro.component.css'
 })
 export class RegistroComponent{
+  ciudades = Object.values(Municipality);
 
   registerForm!: FormGroup;
 
-  private crearFormulario() {
+  private createForm() {
     this.registerForm = this.formBuilder.group({     
-      nombre: ['', [Validators.required]],
+      nombre: ['', [Validators.required, Validators.maxLength(100)]],
       telefono: ['', [Validators.required, Validators.maxLength(10)]],
-      ciudad: ['', [Validators.required]],
-      direccion: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],     
+      municipality: ['', [Validators.required]],
+      direccion: ['', [Validators.required, Validators.maxLength(100)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],     
       password: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(7)]],
       confirmaPassword: ['', [Validators.required]] 
     }, { validators: this.passwordsMatchValidator } as AbstractControlOptions
     );
   }
+
+   private passwordsMatchValidator(formGroup: FormGroup) {
+    const password = formGroup.get('password')?.value;
+    const confirmaPassword = formGroup.get('confirmaPassword')?.value;
+
+    return password === confirmaPassword ? null : { passwordsMismatch: true };
+  }
    
 
-  constructor(private formBuilder: FormBuilder) { 
-    this.crearFormulario();
+  constructor(private formBuilder: FormBuilder, private userService: UserService) { 
+    this.createForm();
   }
 
   public registration() {
-    console.log(this.registerForm.value);
- }
 
- public passwordsMatchValidator(formGroup: FormGroup) {
-  const password = formGroup.get('password')?.value;
-  const confirmaPassword = formGroup.get('confirmaPassword')?.value;
- 
-  // Si las contraseñas no coinciden, devuelve un error, de lo contrario, null
-  return password == confirmaPassword ? null : { passwordsMismatch: true };
- }
- 
-}
+    if (this.registerForm.invalid) {
+      this.registerForm.markAllAsTouched(); // ✅ muestra los errores si no ha escrito nada
+      return;
+    }
+    
+    const createUser = this.registerForm.value as CreateUserDTO;
 
+    this.userService.create(createUser).subscribe({
+      next: (data) => {
 
- 
- 
+        Swal.fire({
+          title: 'Éxito',
+          text: data.content,
+          icon: 'success'
+        });
+      },
+      error: (error) => {
+
+        Swal.fire({
+          title: 'Error',
+          text: error.error.content,
+          icon: 'error'
+        });
+      }
+    });
+  }
+}   
