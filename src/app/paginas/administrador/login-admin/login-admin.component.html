@@ -1,15 +1,22 @@
 <div class="containerPrincipal">
+  
   <div class="login-page">
     <div class="logo-container">
-      <img src="LogoShieldUQ.png" alt="Escudo Shield UQ" class="logo" />
+      <img src="image.png" alt="Admin" class="logo" />
+    </div>
+
+    <div class="back-button-container">
+      <a href="/inicio" class="back-button">
+        <i class="fas fa-arrow-left"></i> Volver al inicio
+      </a>
     </div>
 
     <div class="titulo">
-      <h1>INICIO DE SESIÓN</h1>
+      <h1>BIENVENIDO ADMINISTRADOR</h1>
     </div>
 
     <div class="subtexto-centrado">
-      <p>Inicia sesión con tu cuenta de <strong>SHIELD UQ</strong></p>
+      <p>Inicia con tus credenciales <strong>SHIELD UQ</strong></p>
     </div>
 
     <form [formGroup]="loginForm" (ngSubmit)="login()" class="formulario">
@@ -21,10 +28,6 @@
       <div class="campo">
         <label>Password</label>
         <input type="password" placeholder="Ingresa tu password" formControlName="password" />
-      </div>
-
-      <div class="recuperar">
-        <a href="#" class="enlace">Recuperar contraseña</a>
       </div>
 
       <div class="boton-ingresar">
