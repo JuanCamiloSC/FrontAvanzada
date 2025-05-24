@@ -1,3 +1,4 @@
+<form [formGroup]="verificationForm">
 <div class="contenedorPrincipal" >
     <div class="contenedor">
         <div class="codigoConfirmacion">
@@ -7,9 +8,12 @@
                 Ingreselo a continuación para continuar con el proceso de registro.
             </h2>
             <input type="text" formControlName="verificacion" placeholder="Ingresa tu código de verificación" />
-            <button type="button" class="btnVerificar">Verificar</button>
-        </div>    
-
+            <div *ngIf="verificationForm.get('verificacion')?.invalid && verificationForm.get('verificacion')?.touched" class="alert alert-danger">
+                El código es requerido y debe tener entre 4 y 6 dígitos.
+            </div> 
+            
+            <button type="button" class="btnVerificar" (click)="verificarCodigo()">Verificar</button>       
+            </div>    
+        </div>
     </div>
-
-</div>
+</form>

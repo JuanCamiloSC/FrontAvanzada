@@ -86,14 +86,17 @@ nav {
   position: absolute;
   top: 40px;
   left: 20px;
-  color: rgb(0, 0, 0);
+
   background: linear-gradient(to bottom, #fcea0d, #ff7a00);
   padding: 8px 12px;
   border-radius: 6px;
-  text-decoration: none;
+  
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
   transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
 }
 
 .admin-link:hover {

@@ -3,6 +3,8 @@
         <div class="contenedorBotones">
             <button type="button" class="btnInicio" (click)="goToLogin()">Inicio</button>
             <button type="button" class="btnRegistrarse" (click)="goToRegistration()">Registrarse</button>
+            
+
         </div>
             <div>
                 <img src="LogoShieldUQ.png" class="logo"/>
@@ -12,7 +14,7 @@
                 u otros sucesos importantes para la comunidad. Juntos, hacemos de nuestro entorno un lugar más seguro y solidario.
                 </p>
 
-                <a href="/admin-login" class="admin-link">Administrador</a>
+                <button type="button" class="admin-link" (click)="goToAdminLogin()">Administrador</button>
             </div>
     </div>
   <!-- El ID aquí debe coincidir con el container que usas en TypeScript -->

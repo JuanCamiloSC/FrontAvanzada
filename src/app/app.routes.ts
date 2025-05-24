@@ -28,8 +28,8 @@ export const routes: Routes = [
    { path: 'password-recuperar', component: PasswordRecuperarComponent},
    { path: 'principal-usuario', component: PrincipalUsuarioComponent},
    { path: 'perfil', component: PerfilComponent},
-   {path: 'editar-perfil', component: EditarPerfilComponent},
-   {path: 'gestion-categorias', component: GestionCategoriasComponent},
-   {path: 'gestion-reportesadmin', component: GestionReportesadminComponent},
+   { path: 'editar-perfil', component: EditarPerfilComponent},
+   { path: 'gestion-categorias', component: GestionCategoriasComponent},
+   { path: 'gestion-reportesadmin', component: GestionReportesadminComponent},
    { path: '**', pathMatch: 'full', redirectTo: '' }
 ];

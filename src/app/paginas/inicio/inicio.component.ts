@@ -34,4 +34,8 @@ export class InicioComponent implements OnInit {
     this.router.navigate(['/registro']);
   }
 
+  public goToAdminLogin(): void {
+    this.router.navigate(['/login-admin']);
+  }
+
 }

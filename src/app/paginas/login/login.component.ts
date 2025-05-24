@@ -42,10 +42,10 @@ export class LoginComponent {
         const rol = this.tokenService.getRol();
         console.log("ROL:", rol);
 
-        if (rol === 'ROLE_ADMIN') {
-          this.router.navigate(['/admin']); // ruta para admin
+        if (rol === 'ROLE_CLIENT') {
+          this.router.navigate(['/principal-usuario']); // ruta para admin
         } else {
-          this.router.navigate(['/home']); // ruta para usuario normal
+          Swal.fire('Acceso denegado', 'No eres un cliente', 'error');
         }
       },
     

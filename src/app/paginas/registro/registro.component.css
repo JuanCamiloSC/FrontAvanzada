@@ -31,17 +31,7 @@
   margin-bottom: 2rem;
 }
 
-.btnBack {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background: linear-gradient(to bottom, #FFD700, #FF8C00);;
-  border-radius: 50%;
-  border: none;
-  width: 40px;
-  height: 40px;
-  font-size: 1.5rem;
-}
+
 
 .btnContinuar {
   margin-top: 2rem;

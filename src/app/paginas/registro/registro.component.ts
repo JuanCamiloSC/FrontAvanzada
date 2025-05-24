@@ -5,7 +5,9 @@ import { CreateUserDTO } from '../../dto/create-user-dto';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { Municipality } from '../../enum/municipality.enum';
+
 
 
 @Component({
@@ -40,7 +42,7 @@ export class RegistroComponent{
   }
    
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) { 
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { 
     this.createForm();
   }
 
@@ -55,11 +57,14 @@ export class RegistroComponent{
 
     this.userService.create(createUser).subscribe({
       next: (data) => {
+        localStorage.setItem('recoveryEmail', createUser.email); // <- Aquí se guarda
 
         Swal.fire({
           title: 'Éxito',
           text: data.content,
           icon: 'success'
+        }).then(() => {
+          this.router.navigate(['/codigo-verificacion']); // ← redirige luego de aceptar
         });
       },
       error: (error) => {
@@ -72,4 +77,5 @@ export class RegistroComponent{
       }
     });
   }
+
 }   
