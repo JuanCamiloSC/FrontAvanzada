@@ -12,6 +12,7 @@ import { PasswordRecuperarComponent } from './paginas/password-recuperar/passwor
 import { PrincipalUsuarioComponent } from './paginas/principal-usuario/principal-usuario.component';
 import { PerfilComponent } from './paginas/perfil/perfil.component';
 import { EditarPerfilComponent } from './paginas/editar-perfil/editar-perfil.component';
+import { GestionCategoriasComponent } from './paginas/administrador/gestion-categorias/gestion-categorias.component';
 
 export const routes: Routes = [
    { path: '', component: InicioComponent },
@@ -27,5 +28,6 @@ export const routes: Routes = [
    { path: 'principal-usuario', component: PrincipalUsuarioComponent},
    { path: 'perfil', component: PerfilComponent},
    {path: 'editar-perfil', component: EditarPerfilComponent},
+   {path: 'gestion-categorias', component: GestionCategoriasComponent},
    { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
