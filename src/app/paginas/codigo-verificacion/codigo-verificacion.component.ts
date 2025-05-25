@@ -27,7 +27,7 @@ export class CodigoVerificacionComponent {
 
   private createForm() {
     this.verificationForm = this.formBuilder.group({
-      verificacion: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(6)]]
+      verificacion: ['', [Validators.required]]
     });
   }
 

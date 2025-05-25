@@ -41,7 +41,7 @@ export class LoginAdminComponent {
         this.tokenService.login(data.content);
         const rol = this.tokenService.getRol();
 
-        if (rol === 'ROLE_ADMIN') {
+        if (rol === 'ADMIN') {
           this.router.navigate(['/admin']);
         } else {
           Swal.fire('Acceso denegado', 'No eres administrador', 'error');

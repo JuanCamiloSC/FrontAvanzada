@@ -35,15 +35,16 @@ export class LoginComponent {
   public login(){
     const loginDTO = this.loginForm.value as LoginDTO;
 
+    loginDTO.email = loginDTO.email.trim().toLowerCase();
+
     this.authService.login(loginDTO).subscribe({
       next: (data) => {
         this.tokenService.login(data.content);
 
         const rol = this.tokenService.getRol();
-        console.log("ROL:", rol);
 
         if (rol === 'ROLE_CLIENT') {
-          this.router.navigate(['/principal-usuario']); // ruta para admin
+          this.router.navigate(['/principal-usuario']); 
         } else {
           Swal.fire('Acceso denegado', 'No eres un cliente', 'error');
         }

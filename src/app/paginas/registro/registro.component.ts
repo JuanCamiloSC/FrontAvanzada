@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { Municipality } from '../../enum/municipality.enum';
+import { Rol } from '../../enum/rol.enum';
 
 
 
@@ -49,53 +50,55 @@ export class RegistroComponent{
   public registration() {
 
     if (this.registerForm.invalid) {
-      this.registerForm.markAllAsTouched(); // ✅ muestra los errores si no ha escrito nada
+      this.registerForm.markAllAsTouched();
       return;
     }
-    
-    const createUser = this.registerForm.value as CreateUserDTO;
+
+    const formValues = this.registerForm.value;
+
+    const createUser: CreateUserDTO = {
+      name: formValues.nombre,
+      phone: formValues.telefono,
+      municipality: formValues.municipality,
+      address: formValues.direccion,
+      email: formValues.email,
+      password: formValues.password,
+      rol: Rol.CLIENT 
+    };
 
     this.userService.create(createUser).subscribe({
       next: (data) => {
-        localStorage.setItem('recoveryEmail', createUser.email); // <- Aquí se guarda
-        
+        localStorage.setItem('recoveryEmail', createUser.email);
 
-        Swal.fire({
-          title: 'Éxito',
-          text: data.content,
-          icon: 'success'
-        }).then(() => {
-          this.router.navigate(['/codigo-verificacion']); // ← redirige luego de aceptar
+        // Enviar el correo de verificación desde el backend
+        this.userService.sendVerificationCode(createUser.email).subscribe({
+          next: () => {
+            Swal.fire({
+              title: 'Éxito',
+              text: data.content,
+              icon: 'success'
+            }).then(() => {
+              this.router.navigate(['/codigo-verificacion']);
+            });
+          },
+          error: (error) => {
+            Swal.fire({
+              title: 'Error',
+              text: 'El usuario se creó, pero falló el envío del correo.',
+              icon: 'error'
+            });
+          }
         });
       },
       error: (error) => {
-
-        let mensaje = 'Error inesperado';
-
-        if (error.error) {
-          if (Array.isArray(error.error)) {
-            // Si backend devuelve un array de errores
-            mensaje = error.error.map((e: any) => e.message || JSON.stringify(e)).join('<br>');
-          } else if (typeof error.error === 'object') {
-            if (typeof error.error.content === 'string') {
-              mensaje = error.error.content;
-            } else if (Array.isArray(error.error.content)) {
-              mensaje = error.error.content.map((e: any) => e.message || JSON.stringify(e)).join('<br>');
-            } else {
-              mensaje = JSON.stringify(error.error.content);
-            }
-          } else if (typeof error.error === 'string') {
-            mensaje = error.error;
-          }
-        }
-
         Swal.fire({
           title: 'Error',
-          html: mensaje,
+          text: error.error.content,
           icon: 'error'
         });
       }
     });
   }
+
 
 }   

@@ -37,10 +37,16 @@ public logout() {
 }
 
 private decodePayload(token: string): any {
- const payload = token!.split(".")[1];
- const base64 = payload.replace(/-/g, '+').replace(/_/g, '/');
- const decodedPayload = atob(base64);
- return JSON.parse(decodedPayload);
+  try {
+    const payload = token.split(".")[1];
+    if (!payload) throw new Error("Token sin payload");
+    const base64 = payload.replace(/-/g, '+').replace(/_/g, '/');
+    const decodedPayload = atob(base64);
+    return JSON.parse(decodedPayload);
+  } catch (e) {
+    console.error("Error decodificando el token:", e);
+    return {};
+  }
 }
 
 public getIdUser(): string {
@@ -54,13 +60,25 @@ public getIdUser(): string {
 
 
 public getRol(): string {
- const token = this.getToken();
- if (token) {
-   const values = this.decodePayload(token);
-   return values.rol;
- }
- return "";
+  const token = this.getToken();
+  if (!token) return '';
+
+  try {
+    const base64Url = token.split('.')[1];
+    if (!base64Url) return '';
+
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = atob(base64);
+    const payload = JSON.parse(jsonPayload);
+
+    const rawRol = payload.rol || '';
+    return `ROLE_${rawRol.toUpperCase()}`; // <--- Aquí lo normalizamos
+  } catch (e) {
+    console.error('Error al decodificar el token:', e);
+    return '';
+  }
 }
+
 
 
 

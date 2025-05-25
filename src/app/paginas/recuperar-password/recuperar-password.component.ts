@@ -25,7 +25,7 @@ export class RecuperarPasswordComponent {
 
   private crearFormulario() {
     this.newPassForm = this.formBuilder.group({
-      codigoRecuperacion: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(6)]],
+      codigoRecuperacion: ['', [Validators.required]],
       nuevaPassword: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10)]],
       confirmarPassword: ['', [Validators.required]]
     }, { validators: this.passwordsMatchValidator } as AbstractControlOptions
