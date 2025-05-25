@@ -58,6 +58,7 @@ export class RegistroComponent{
     this.userService.create(createUser).subscribe({
       next: (data) => {
         localStorage.setItem('recoveryEmail', createUser.email); // <- Aquí se guarda
+        
 
         Swal.fire({
           title: 'Éxito',
@@ -69,9 +70,28 @@ export class RegistroComponent{
       },
       error: (error) => {
 
+        let mensaje = 'Error inesperado';
+
+        if (error.error) {
+          if (Array.isArray(error.error)) {
+            // Si backend devuelve un array de errores
+            mensaje = error.error.map((e: any) => e.message || JSON.stringify(e)).join('<br>');
+          } else if (typeof error.error === 'object') {
+            if (typeof error.error.content === 'string') {
+              mensaje = error.error.content;
+            } else if (Array.isArray(error.error.content)) {
+              mensaje = error.error.content.map((e: any) => e.message || JSON.stringify(e)).join('<br>');
+            } else {
+              mensaje = JSON.stringify(error.error.content);
+            }
+          } else if (typeof error.error === 'string') {
+            mensaje = error.error;
+          }
+        }
+
         Swal.fire({
           title: 'Error',
-          text: error.error.content,
+          html: mensaje,
           icon: 'error'
         });
       }
