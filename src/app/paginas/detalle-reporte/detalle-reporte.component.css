@@ -91,3 +91,39 @@ label {
   border: 2px solid #ffcc00;
   border-radius: 8px;
 }
+
+/* --- ESTILOS PARA VOTACIÓN DE IMPORTANCIA --- */
+
+.seccion-importancia {
+  background-color: #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.opciones {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.opcion {
+  background-color: white;
+  padding: 10px 20px;
+  border: 2px solid orange;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: orange;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
