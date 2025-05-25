@@ -39,6 +39,26 @@
       <p class="dato-estatico">{{ reporte.descripcion }}</p>
     </div>
 
+    <!-- Votación de importancia -->
+    <div class="seccion-importancia">
+      <p><strong>¿Qué tan importante consideras este reporte?</strong></p>
+      <div class="opciones">
+        <label class="opcion">
+          <input type="radio" formControlName="nivelImportancia" value="Bajo" />
+          Bajo
+        </label>
+        <label class="opcion">
+          <input type="radio" formControlName="nivelImportancia" value="Medio" />
+          Medio
+        </label>
+        <label class="opcion">
+          <input type="radio" formControlName="nivelImportancia" value="Alto" />
+          Alto
+        </label>
+      </div>
+      <button (click)="votarImportancia()">Votar</button>
+    </div>
+
     <!-- Comentarios -->
     <div class="reporte-comentarios">
       <label>Comentario del usuario:</label>
@@ -53,7 +73,6 @@
         Lat: {{ reporte.ubicacion.latitud }}<br>
         Lng: {{ reporte.ubicacion.longitud }}
       </p>
-      <!-- Si usas Leaflet o Google Maps, aquí puedes cargar el mapa -->
       <div id="mapa" class="mapa-estatico"></div>
     </div>
 
