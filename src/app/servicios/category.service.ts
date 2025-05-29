@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { MessageDTO } from '../dto/message-dto';
 import { CreateCategoryDTO } from '../dto/create-category-dto';
 import { UpdateCategoryDTO } from '../dto/update-category-dto';
+import { CategoryDTO } from '../dto/category-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -14,24 +15,28 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  public create(createCategoryDTO: CreateCategoryDTO): Observable<MessageDTO> {
-    return this.http.post<MessageDTO>(this.categoryURL, createCategoryDTO);
+  // ✅ Retorna la categoría creada
+  public create(createCategoryDTO: CreateCategoryDTO): Observable<MessageDTO<CategoryDTO>> {
+    return this.http.post<MessageDTO<CategoryDTO>>(this.categoryURL, createCategoryDTO);
   }
 
-  public update(updateCategoryDTO: UpdateCategoryDTO): Observable<MessageDTO> {
-    return this.http.put<MessageDTO>(this.categoryURL, updateCategoryDTO);
+  // ✅ Retorna la categoría actualizada
+  public update(updateCategoryDTO: UpdateCategoryDTO): Observable<MessageDTO<CategoryDTO>> {
+    return this.http.put<MessageDTO<CategoryDTO>>(this.categoryURL, updateCategoryDTO);
   }
 
-  public delete(id: string): Observable<MessageDTO> {
-    return this.http.delete<MessageDTO>(`${this.categoryURL}/${id}`);
+  // ✅ Retorna un string con mensaje de éxito
+  public delete(id: string): Observable<MessageDTO<string>> {
+    return this.http.delete<MessageDTO<string>>(`${this.categoryURL}/${id}`);
   }
 
-  public get(id: string): Observable<MessageDTO> {
-    return this.http.get<MessageDTO>(`${this.categoryURL}/${id}`);
+  // ✅ Retorna una sola categoría
+  public get(id: string): Observable<MessageDTO<CategoryDTO>> {
+    return this.http.get<MessageDTO<CategoryDTO>>(`${this.categoryURL}/${id}`);
   }
 
-  public list(): Observable<MessageDTO> {
-    return this.http.get<MessageDTO>(this.categoryURL);
+  // ✅ Retorna una lista de categorías
+  public list(): Observable<MessageDTO<CategoryDTO[]>> {
+    return this.http.get<MessageDTO<CategoryDTO[]>>(this.categoryURL);
   }
 }
-

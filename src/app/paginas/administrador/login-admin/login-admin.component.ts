@@ -38,7 +38,7 @@ export class LoginAdminComponent {
     this.authService.login(loginDTO).subscribe({
 
       next: (data) => {
-        this.tokenService.login(data.content);
+        this.tokenService.login(data.content.token);
         const rol = this.tokenService.getRol();
 
         if (rol === 'ADMIN') {

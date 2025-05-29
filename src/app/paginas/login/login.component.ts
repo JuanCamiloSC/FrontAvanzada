@@ -39,7 +39,9 @@ export class LoginComponent {
 
     this.authService.login(loginDTO).subscribe({
       next: (data) => {
-        this.tokenService.login(data.content);
+        console.log('Token recibido:', data.content.token);
+
+        this.tokenService.login(data.content.token);
 
         const rol = this.tokenService.getRol();
 

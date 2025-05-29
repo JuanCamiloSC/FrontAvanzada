@@ -1,4 +1,4 @@
-export interface MessageDTO {
-    status: boolean,
-    content: string
+export interface MessageDTO<T> {
+    status: boolean;
+    content: T;
 }

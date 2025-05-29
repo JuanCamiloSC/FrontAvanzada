@@ -26,7 +26,8 @@ private readonly  rutasAdmin = [
   '/gestion-reportes',
   '/gestion-categorias',
   '/gestion-reportesadmin',
-  '/administrador'
+  '/administrador',
+  
 ];
 
 private readonly rutasUsuario = [

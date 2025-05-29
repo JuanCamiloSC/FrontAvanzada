@@ -16,25 +16,27 @@ import { GestionCategoriasComponent } from './paginas/administrador/gestion-cate
 import { GestionReportesadminComponent } from './paginas/administrador/gestion-reportesadmin/gestion-reportesadmin.component';
 import { ReportesUsuarioComponent } from './paginas/reportes-usuario/reportes-usuario.component';
 import { AdministradorComponent } from './paginas/administrador/administrador.component';
+import { LoginGuard } from './guards/login.service';
+import { RoleGuard } from './guards/role.service';
 
 export const routes: Routes = [
 
-   {path: '', component: InicioComponent },
-   {path: 'login', component: LoginComponent },
-   {path: 'registro', component: RegistroComponent },
-   {path: 'crear-reporte', component: CrearReporteComponent},
-   {path: 'gestion-reportes', component: GestionReportesComponent },
-   {path: 'detalle-reporte/:id', component: DetalleReporteComponent },
+   {path: '', component: InicioComponent, canActivate: [LoginGuard] },
+   {path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
+   {path: 'registro', component: RegistroComponent, canActivate: [RoleGuard], data: { expectedRole: ["ROLE_CLIENT"] } },
+   {path: 'crear-reporte', component: CrearReporteComponent, canActivate: [RoleGuard], data: { expectedRole: ["ROLE_CLIENT"] }},
+   {path: 'gestion-reportes', component: GestionReportesComponent, canActivate: [RoleGuard], data: { expectedRole: ["ROLE_ADMIN"] } },
+   {path: 'detalle-reporte/:id', component: DetalleReporteComponent, canActivate: [RoleGuard], data: { expectedRole: ["ROLE_CLIENT"] } },
    {path: 'codigo-verificacion', component: CodigoVerificacionComponent},
    {path: 'recuperar-password', component: RecuperarPasswordComponent},
-   {path: 'login-admin', component: LoginAdminComponent},
+   {path: 'login-admin', component: LoginAdminComponent, canActivate: [LoginGuard]},
    {path: 'password-recuperar', component: PasswordRecuperarComponent},
-   {path: 'principal-usuario', component: PrincipalUsuarioComponent},
-   {path: 'perfil', component: PerfilComponent},
-   {path: 'editar-perfil', component: EditarPerfilComponent},
-   {path: 'gestion-categorias', component: GestionCategoriasComponent},
-   {path: 'gestion-reportesadmin', component: GestionReportesadminComponent},
-   {path: 'reportes-usuario', component: ReportesUsuarioComponent},
-   {path: 'administrador', component: AdministradorComponent},
+   {path: 'principal-usuario', component: PrincipalUsuarioComponent, canActivate: [RoleGuard], data: { expectedRole: ["ROLE_CLIENT"] }},
+   {path: 'perfil', component: PerfilComponent, canActivate: [RoleGuard], data: { expectedRole: ["ROLE_CLIENT", "ROLE_ADMIN"] }},
+   {path: 'editar-perfil', component: EditarPerfilComponent, canActivate: [RoleGuard], data: { expectedRole: ["ROLE_CLIENT", "ROLE_ADMIN"] }},
+   {path: 'gestion-categorias', component: GestionCategoriasComponent, canActivate: [RoleGuard], data: { expectedRole: ["ROLE_ADMIN"] }},
+   {path: 'gestion-reportesadmin', component: GestionReportesadminComponent, canActivate: [RoleGuard], data: { expectedRole: ["ROLE_ADMIN"] }},
+   {path: 'reportes-usuario', component: ReportesUsuarioComponent, canActivate: [RoleGuard], data: { expectedRole: ["ROLE_CLIENT"] }},
+   {path: 'administrador', component: AdministradorComponent, canActivate: [RoleGuard], data: { expectedRole: ["ROLE_ADMIN"] }},
    {path: '**', pathMatch: 'full', redirectTo: '' }
 ];

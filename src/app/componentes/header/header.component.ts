@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { TokenService } from '../../servicios/token.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,22 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  title = 'Alertas App';
+  isLogged = false;
+  email: string = "";
 
-  title: String ="SHIELD UQ";
+
+  constructor(private tokenService: TokenService) {
+   this.isLogged = this.tokenService.isLogged();
+   if (this.isLogged) {
+     this.email = this.tokenService.getEmail();
+   }
+ }
+
+
+ public logout() {
+   this.tokenService.logout();
+ }
+
 
 }

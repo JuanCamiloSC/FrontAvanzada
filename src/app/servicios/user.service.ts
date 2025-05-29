@@ -15,53 +15,52 @@ export class UserService {
 
   private userURL = "http://localhost:8080/api/users";
 
-
   constructor(private http: HttpClient) { }
 
-  public create(createrUserDTO: CreateUserDTO): Observable<MessageDTO> {
-    return this.http.post<MessageDTO>(this.userURL, createrUserDTO);
+  // ✅ Retorna el usuario creado
+  public create(createrUserDTO: CreateUserDTO): Observable<MessageDTO<UserDTO>> {
+    return this.http.post<MessageDTO<UserDTO>>(this.userURL, createrUserDTO);
   }
 
-
-  public editar(updateUserDTO: UpdateUserDTO): Observable<MessageDTO> {
-    return this.http.put<MessageDTO>(this.userURL, updateUserDTO);
+  // ✅ Retorna el usuario actualizado
+  public editar(updateUserDTO: UpdateUserDTO): Observable<MessageDTO<UserDTO>> {
+    return this.http.put<MessageDTO<UserDTO>>(this.userURL, updateUserDTO);
   }
 
-
-  public delete(id: string): Observable<MessageDTO> {
-    return this.http.delete<MessageDTO>(`${this.userURL}/${id}`);
+  // ✅ Retorna string de confirmación
+  public delete(id: string): Observable<MessageDTO<string>> {
+    return this.http.delete<MessageDTO<string>>(`${this.userURL}/${id}`);
   }
 
-
-  public get(id: string): Observable<MessageDTO> {
-    return this.http.get<MessageDTO>(`${this.userURL}/${id}`);
+  // ✅ Retorna un usuario
+  public get(id: string): Observable<MessageDTO<UserDTO>> {
+    return this.http.get<MessageDTO<UserDTO>>(`${this.userURL}/${id}`);
   }
 
-  public listAllUsers(filter?: { name?: string; city?: string }): Observable<MessageDTO> {
-  let params = new HttpParams();
-
-  if (filter) {
-    if (filter.name) {
-      params = params.set('name', filter.name);
+  // ✅ Retorna lista de usuarios
+  public listAllUsers(filter?: { name?: string; city?: string }): Observable<MessageDTO<UserDTO[]>> {
+    let params = new HttpParams();
+    if (filter) {
+      if (filter.name) {
+        params = params.set('name', filter.name);
+      }
+      if (filter.city) {
+        params = params.set('city', filter.city);
+      }
     }
-    if (filter.city) {
-      params = params.set('city', filter.city);
-    }
+    return this.http.get<MessageDTO<UserDTO[]>>(this.userURL, { params });
   }
 
-  return this.http.get<MessageDTO>(this.userURL, { params });
-}
-
-  public activateAccount(email: string, code: string): Observable<MessageDTO> {
-    return this.http.put<MessageDTO>(`${this.userURL}/${email}/activate`, { code });
+  // ✅ Retorna string de éxito
+  public activateAccount(email: string, code: string): Observable<MessageDTO<string>> {
+    return this.http.put<MessageDTO<string>>(`${this.userURL}/${email}/activate`, { code });
   }
 
-  public changePassword(email: string, code: string, newPass: string): Observable<MessageDTO> {
-    return this.http.put<MessageDTO>(`${this.userURL}/${email}/password`, { code, newPass });
+  public changePassword(email: string, code: string, newPass: string): Observable<MessageDTO<string>> {
+    return this.http.put<MessageDTO<string>>(`${this.userURL}/${email}/password`, { code, newPass });
   }
 
-  public sendVerificationCode(email: string): Observable<MessageDTO> {
-  return this.http.post<MessageDTO>(`${this.userURL}/${email}/verificationCode`, {});
-}
-
+  public sendVerificationCode(email: string): Observable<MessageDTO<string>> {
+    return this.http.post<MessageDTO<string>>(`${this.userURL}/${email}/verificationCode`, {});
+  }
 }

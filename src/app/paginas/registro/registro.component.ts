@@ -75,7 +75,7 @@ export class RegistroComponent{
           next: () => {
             Swal.fire({
               title: 'Éxito',
-              text: data.content,
+              text: 'Usuario ${data.content.name} registrado correctamente',
               icon: 'success'
             }).then(() => {
               this.router.navigate(['/codigo-verificacion']);

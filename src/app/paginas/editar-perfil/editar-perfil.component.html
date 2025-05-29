@@ -3,47 +3,43 @@
         <img src="https://via.placeholder.com/100" alt="Foto de perfil" class="profile-image">
 
        <div class = "menu-potions">
-            <button class="btn edit">
-            <i class="icon">✏️</i> Editar perfil
-            </button>
 
-            <button class="btn reports">
+
+            <button class="btn reports" (click)="goToMyReports()">
             <i class="icon">📄</i> Mis reportes
             </button>
 
-            <button class="btn delete">
-            <i class="icon">❌</i> Eliminar cuenta
-            </button>
+
         </div>
     </div>
 
     <div class="profile-edit">
         <h2>Información del usuario</h2>
 
-        <form action="#" method="post">
+        <form [formGroup]="editForm" (ngSubmit)="saveChanges()">
             <div class="form-row">
             <label for="nombre">Nombre del usuario:</label>
-            <input type="text" id="nombre" name="nombre" value="Shield UQ" />
+            <input type="text" id="nombre" formControlName="name"  />
             </div>
 
             <div class="form-row">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="shield@email.com" />
+            <input type="email" id="email" formControlName="email"  />
             </div>
 
             <div class="form-row">
             <label for="telefono">Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" value="0123456789" />
+            <input type="tel" id="telefono" formControlName="phone" />
             </div>
 
             <div class="form-row">
             <label for="ciudad">Ciudad:</label>
-            <input type="text" id="ciudad" name="ciudad" value="Mi ciudad" />
+            <input type="text" id="ciudad" formControlName="municipality" />
             </div>
 
             <div class="form-row">
             <label for="direccion">Dirección:</label>
-            <input type="text" id="direccion" name="direccion" value="Calle #123" />
+            <input type="text" id="direccion" formControlName="address" />
             </div>
 
             <div class="form-row">
