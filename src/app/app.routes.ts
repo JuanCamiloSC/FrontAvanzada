@@ -23,7 +23,7 @@ export const routes: Routes = [
 
    {path: '', component: InicioComponent, canActivate: [LoginGuard] },
    {path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
-   {path: 'registro', component: RegistroComponent, canActivate: [RoleGuard], data: { expectedRole: ["ROLE_CLIENT"] } },
+   {path: 'registro', component: RegistroComponent },
    {path: 'crear-reporte', component: CrearReporteComponent, canActivate: [RoleGuard], data: { expectedRole: ["ROLE_CLIENT"] }},
    {path: 'gestion-reportes', component: GestionReportesComponent, canActivate: [RoleGuard], data: { expectedRole: ["ROLE_ADMIN"] } },
    {path: 'detalle-reporte/:id', component: DetalleReporteComponent, canActivate: [RoleGuard], data: { expectedRole: ["ROLE_CLIENT"] } },
