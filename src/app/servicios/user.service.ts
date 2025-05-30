@@ -6,6 +6,8 @@ import { UpdateUserDTO } from '../dto/update-user-dto';
 import { UserDTO } from '../dto/user-dto';
 import { Observable } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
+import { Municipality } from '../enum/municipality.enum';
+import { Rol } from '../enum/rol.enum';
 
 
 @Injectable({
@@ -63,4 +65,27 @@ export class UserService {
   public sendVerificationCode(email: string): Observable<MessageDTO<string>> {
     return this.http.post<MessageDTO<string>>(`${this.userURL}/${email}/verificationCode`, {});
   }
+
+  public crearAdminDePrueba(): void {
+  const nuevoAdmin: CreateUserDTO = {
+    name: 'Admin de Prueba',
+    phone: '3111234567',
+    municipality: Municipality.ARMENIA,
+    address: 'Carrera 15 #20-30',
+    email: 'admin@shielduq.com',
+    password: 'admin123',
+    rol: Rol.ADMIN
+  };
+
+  this.create(nuevoAdmin).subscribe({
+    next: (data) => {
+      console.log('✅ Usuario admin creado:', data.content);
+    },
+    error: (err) => {
+      console.error('❌ Error al crear el admin:', err.error?.content || err.message);
+    }
+  });
+}
+
+  
 }

@@ -2,68 +2,79 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CategoryService } from '../../../servicios/category.service';
+import { CategoryDTO } from '../../../dto/category-dto';
+import { CreateCategoryDTO } from '../../../dto/create-category-dto';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-gestion-categorias',
+  standalone: true,
   imports: [ReactiveFormsModule, RouterModule, CommonModule],
   templateUrl: './gestion-categorias.component.html',
   styleUrl: './gestion-categorias.component.css'
 })
-export class GestionCategoriasComponent implements OnInit{
-   categoriaForm!: FormGroup;
+export class GestionCategoriasComponent implements OnInit {
+  categoriaForm!: FormGroup;
+  categorias: CategoryDTO[] = [];
 
-  categorias = [
-    {
-      id: 1,
-      titulo: 'Alumbrado Público',
-      descripcion: 'Reportes relacionados con el alumbrado público en la ciudad.'
-    },
-    {
-      id: 2,
-      titulo: 'Robo',
-      descripcion: 'Reportes de robos o hurtos en la zona.'
-    },
-    {
-      id: 3,
-      titulo: 'Mascota Perdida',
-      descripcion: 'Reportes de mascotas perdidas en la comunidad.'
-    },
-    {
-      id: 4,
-      titulo: 'Vandalismo',
-      descripcion: 'Reportes de vandalismo o daños a la propiedad pública.'
-    },
-    {
-      id: 5,
-      titulo: 'Incendio',
-      descripcion: 'Reportes de incendios en la zona.'
-    }
-  ];
-
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private categoryService: CategoryService
+  ) {}
 
   ngOnInit(): void {
     this.categoriaForm = this.fb.group({
-      titulo: ['', [Validators.required, Validators.maxLength(50)]],
-      descripcion: ['', [Validators.required, Validators.maxLength(255)]]
+      name: ['', [Validators.required, Validators.maxLength(50)]],
+      description: ['', [Validators.required, Validators.maxLength(255)]]
+    });
+
+    this.cargarCategorias();
+  }
+
+  cargarCategorias(): void {
+    this.categoryService.list().subscribe({
+      next: (res) => {
+        this.categorias = res.content;
+      },
+      error: (err) => {
+        console.error('Error al cargar categorías', err);
+        Swal.fire('Error', 'No se pudieron cargar las categorías', 'error');
+      }
     });
   }
 
   onSubmit(): void {
-    if (this.categoriaForm.valid) {
-      const nuevaCategoria = {
-        id: this.categorias.length ? Math.max(...this.categorias.map(c => c.id)) + 1 : 1,
-        ...this.categoriaForm.value
-      };
-      this.categorias.push(nuevaCategoria);
-      this.categoriaForm.reset();
-    } else {
+    if (this.categoriaForm.invalid) {
       this.categoriaForm.markAllAsTouched();
+      return;
     }
+
+    const dto: CreateCategoryDTO = this.categoriaForm.value;
+
+    this.categoryService.create(dto).subscribe({
+      next: (res) => {
+        this.categorias.push(res.content); // Agrega la nueva categoría
+        this.categoriaForm.reset();
+        Swal.fire('Éxito', 'Categoría creada correctamente', 'success');
+      },
+      error: (err) => {
+        console.error('Error al crear categoría', err);
+        Swal.fire('Error', 'No se pudo crear la categoría', 'error');
+      }
+    });
   }
 
-  eliminarCategoria(id: number): void {
-    this.categorias = this.categorias.filter(categoria => categoria.id !== id);
+  eliminarCategoria(id: string): void {
+    this.categoryService.delete(id).subscribe({
+      next: () => {
+        this.categorias = this.categorias.filter(cat => cat.id !== id);
+        Swal.fire('Eliminado', 'La categoría fue eliminada correctamente', 'success');
+      },
+      error: (err) => {
+        console.error('Error al eliminar categoría', err);
+        Swal.fire('Error', 'No se pudo eliminar la categoría', 'error');
+      }
+    });
   }
-    
 }

@@ -1,48 +1,47 @@
 <div class="contenedor-principal">
-    <form [formGroup]="categoriaForm" (ngSubmit)="onSubmit()" class="formulario">
-    
+  <form [formGroup]="categoriaForm" (ngSubmit)="onSubmit()" class="formulario">
     <h2>Agregar Nueva Categoría</h2>
 
     <div class="campo">
-        <label for="titulo">Título</label>
-        <input id="titulo" formControlName="titulo" type="text" />
-        <div *ngIf="categoriaForm.get('titulo')?.invalid && categoriaForm.get('titulo')?.touched" class="error">
-        El título es requerido y debe tener máximo 50 caracteres.
-        </div>
+      <label for="name">Nombre</label>
+      <input id="name" formControlName="name" type="text" />
+      <div *ngIf="categoriaForm.get('name')?.invalid && categoriaForm.get('name')?.touched" class="error">
+        El nombre es requerido y debe tener máximo 50 caracteres.
+      </div>
     </div>
 
     <div class="campo">
-        <label for="descripcion">Descripción</label>
-        <textarea id="descripcion" formControlName="descripcion"></textarea>
-        <div *ngIf="categoriaForm.get('descripcion')?.invalid && categoriaForm.get('descripcion')?.touched" class="error">
+      <label for="description">Descripción</label>
+      <textarea id="description" formControlName="description"></textarea>
+      <div *ngIf="categoriaForm.get('description')?.invalid && categoriaForm.get('description')?.touched" class="error">
         La descripción es requerida y debe tener máximo 255 caracteres.
-        </div>
+      </div>
     </div>
 
     <button type="submit" class="btn crear">Guardar Categoría</button>
-    </form>
+  </form>
 
-    <div class="tabla-categorias">
+  <div class="tabla-categorias">
     <h2>Categorías Existentes</h2>
     <table>
-        <thead>
+      <thead>
         <tr>
-            <th>ID</th>
-            <th>Título</th>
-            <th>Descripción</th>
-            <th>Acciones</th>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Acciones</th>
         </tr>
-        </thead>
-        <tbody>
+      </thead>
+      <tbody>
         <tr *ngFor="let categoria of categorias">
-            <td>{{ categoria.id }}</td>
-            <td>{{ categoria.titulo }}</td>
-            <td>{{ categoria.descripcion }}</td>
-            <td>
+          <td>{{ categoria.id }}</td>
+          <td>{{ categoria.name }}</td>
+          <td>{{ categoria.description }}</td>
+          <td>
             <button class="btn eliminar" (click)="eliminarCategoria(categoria.id)">Eliminar</button>
-            </td>
+          </td>
         </tr>
-        </tbody>
+      </tbody>
     </table>
-    </div>
+  </div>
 </div>

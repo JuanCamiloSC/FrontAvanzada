@@ -6,6 +6,7 @@ import { HeaderUsuarioComponent } from './componentes/header-usuario/header-usua
 import { FooterComponent } from "./componentes/footer/footer.component";
 import { filter } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { UserService } from './servicios/user.service';
 
 
 @Component({
@@ -35,11 +36,11 @@ private readonly rutasUsuario = [
   '/principal-usuario',
   '/perfil',
   '/editar-perfil',
-  '/detalle-reporte/id',
+  '/detalle-reporte',
   '/reportes-usuario'
 ];
 
-constructor(private router: Router) {
+constructor(private router: Router, private userService: UserService) {
   this.router.events
     .pipe(filter(event => event instanceof NavigationEnd))
     .subscribe((event: NavigationEnd) => {
@@ -50,6 +51,8 @@ constructor(private router: Router) {
     this.mostrarBarraAdmin = this.rutasAdmin.includes(rutaActual);
     this.mostrarBarraUsuario = this.rutasUsuario.includes(rutaActual);
     });
+
+    //this.userService.crearAdminDePrueba();
   } 
 }
 
