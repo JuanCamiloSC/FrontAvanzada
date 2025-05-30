@@ -10,7 +10,7 @@ import { TokenService } from '../../servicios/token.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  title = 'Alertas App';
+  title = '';
   isLogged = false;
   email: string = "";
 

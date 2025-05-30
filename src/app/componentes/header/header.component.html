@@ -5,21 +5,12 @@
       <span class="logo-title">{{ title }}</span>
     </a>
 
-    <div class="text-end">
-      @if (!isLogged) {
-      <button type="button" routerLink="/login" class="btn btn-outline-light me-2">Login</button>
-      <button type="button" routerLink="/registro" class="btn btn-primary">Registro</button>
-      }@else {
-      <label class="me-3">Hola {{email}}</label>
-      <button type="button" (click)="logout()" class="btn btn-outline-light">Logout</button>
-    }
-  </div>
-
+    
     <nav class="nav-menu">
       <a routerLink="/administrador" class="nav-link">Inicio</a>
       <a routerLink="/gestion-reportes" class="nav-link">Gestión reportes</a>
       <a routerLink="/gestion-categorias" class="nav-link">Gestión categorías</a>
-      <a routerLink="/gestion-reportesadmin" class="nav-link">Gestión de reportes</a>
+      <a routerLink="/gestion-reportesadmin" class="nav-link">Gestión reportes Pendientes</a>
       <a routerLink="/login" class="nav-link">Cerrar sesión</a>
     </nav>
   </div>
